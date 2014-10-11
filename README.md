@@ -1,10 +1,10 @@
 # Daniel Sienkiewicz (206358) NoSQL - MongoDB
 
 * [Komputer](#Komputer)
-* [1a](#1a)
-* [1b](#1b)
-* [1c](#1c)
-* [1e](#1e)
+* [Zadanie 1a](#1a)
+* [Zadanie 1b](#1b)
+* [Zadanie 1c](#1c)
+* [Zadanie 1e](#1e)
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
@@ -21,18 +21,20 @@ Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na sw
 * PostgreSQL
 
 Odp:
-Przez importem należy "naprawić" plik Train.csv za pomocą skryptu naprawa.sh
+Przed importem należy "naprawić" plik Train.csv (za pomocą skryptu [naprawa.sh](https://github.com/henio180/NoSQL/blob/master/naprawa.sh))
 ~~~
 $ time ./naprawa.sh Train.csv naprawionyTrain.csv
-real	12m6.155s
-user	0m46.461s
-sys	2m8.678s
+real 12m6.155s
+user 0m46.461s
+sys 2m8.678s
+~~~
 
+Następnie import pliku
+~~~
 $ time mongoimport -d trans -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
-real	8m15.141s
-user	3m58.573s
-sys	0m22.813s
-
+real 8m15.141s
+user 3m58.573s
+sys 0m22.813s
 ~~~
 
 ## 1b
@@ -42,6 +44,10 @@ Odp:
 ~~~
 > db.train.count()
 6034195
+
+real 0m0.067s
+user 0m0.059s
+sys 0m0.008s
 ~~~
 
 ## 1c
@@ -49,9 +55,44 @@ Odp:
 
 W tym zadaniu należy napisać program, który to zrobi. W przypadku MongoDB należy użyć jednego ze sterowników ze  strony MongoDB Ecosystem. W przypadku PostgreSQL – należy to zrobić w jakikolwiek sposób.
 
-Odp:
+Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/tags.js))
+~~~
+$ time mongo tags.js
+
+Wszystkie: 17409994
+Unikalne: 42048
+
+real 100m53.022s
+user 59m35.977s
+sys 4m22.558s
 ~~~
 
+Przed zmianą:
+~~~
+> db.train.findOne()
+{
+	"_id" : 1,
+	"title" : "How to check if an uploaded file is an image without mime type?",
+	"body" : "<p>I'd like to check if an uploaded file is an image file (e.g png, jpg, jpeg, gif, bmp) or another file. The problem is that I'm using Uploadify to upload the files, which changes the mime type and gives a 'text/octal' or something as the mime type, no matter which file type you upload.</p>  <p>Is there a way to check if the uploaded file is an image apart from checking the file extension using PHP?</p> ",
+	"tags" : "php image-processing file-upload upload mime-types
+}
+~~~
+
+Po zmianie:
+~~~
+> db.train.findOne()
+{
+	"_id" : 1,
+	"title" : "How to check if an uploaded file is an image without mime type?",
+	"body" : "<p>I'd like to check if an uploaded file is an image file (e.g png, jpg, jpeg, gif, bmp) or another file. The problem is that I'm using Uploadify to upload the files, which changes the mime type and gives a 'text/octal' or something as the mime type, no matter which file type you upload.</p>  <p>Is there a way to check if the uploaded file is an image apart from checking the file extension using PHP?</p> ",
+	"tags" : [
+		"php",
+		"image-processing",
+		"file-upload",
+		"upload",
+		"mime-types"
+	]
+}
 ~~~
 
 ## 1e
