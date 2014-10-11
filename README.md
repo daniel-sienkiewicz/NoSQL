@@ -8,6 +8,7 @@
 * [1e](#1e)
 
 ## About my computer
+* Computer: Toshiba C650 - 1C2
 * CPU: Intel® Core™ i3 CPU M 350 @ 2.27GHz × 4 
 * RAM: 2.8 GiB
 * Disk: 42.1 GB
