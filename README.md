@@ -59,12 +59,34 @@ Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku Ja
 ~~~
 $ time mongo tags.js
 
-Wszystkie: 17409994
-Unikalne: 42048
+Wszystkie: 17410012
+Unikalne: 42049
 
 real 100m53.022s
 user 59m35.977s
 sys 4m22.558s
+~~~
+
+Przykłady tagów, które wystąpiły tylko RAZ:
+~~~
+*qset
+*cportlet
+*django-inlinecss
+*jaegermonkey
+*qdbusxml2cpp
+*imapclient
+*flexclone
+*cftree
+*fpcunit
+*journald
+*regex-injection
+*alsolanguage
+*lsusb
+*multi-focal
+*pm-utils
+*false-flag
+*candelight
+*distributed-storage
 ~~~
 
 Przed zmianą:
