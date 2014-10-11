@@ -59,8 +59,8 @@ Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku Ja
 ~~~
 $ time mongo tags.js
 
-Wszystkie: 17410012
-Unikalne: 42049
+Wszystkie: 17409994
+Unikalne: 42048
 
 real 100m53.022s
 user 59m35.977s
