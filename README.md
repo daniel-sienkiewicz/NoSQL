@@ -21,7 +21,7 @@ Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na sw
 * PostgreSQL
 
 Odp:
-Przed importem należy "naprawić" plik Train.csv (za pomocą skryptu [naprawa.sh](https://github.com/henio180/NoSQL/blob/master/naprawa.sh))
+Przed importem należy "naprawić" plik Train.csv (za pomocą skryptu [naprawa.sh](https://github.com/henio180/NoSQL/blob/master/scripts/naprawa.sh))
 ~~~
 $ time ./naprawa.sh Train.csv naprawionyTrain.csv
 real 12m6.155s
@@ -31,11 +31,17 @@ sys 2m8.678s
 
 Następnie import pliku
 ~~~
-$ time mongoimport -d trans -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
+$ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
 real 8m15.141s
 user 3m58.573s
 sys 0m22.813s
 ~~~
+
+Pamięć orac CPU:
+
+![Memory & CPU](images/import.png)
+
+![Memory & CPU](images/import2.png)
 
 ## 1b
 Zliczyć liczbę zaimportowanych rekordów (Odpowiedź: powinno ich być 6_034_195).
@@ -55,9 +61,9 @@ sys 0m0.008s
 
 W tym zadaniu należy napisać program, który to zrobi. W przypadku MongoDB należy użyć jednego ze sterowników ze  strony MongoDB Ecosystem. W przypadku PostgreSQL – należy to zrobić w jakikolwiek sposób.
 
-Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/tags.js))
+Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js))
 ~~~
-$ time mongo tags.js
+$ time mongo scripts/tags.js
 
 Wszystkie: 17409994
 Unikalne: 42048
@@ -116,6 +122,12 @@ Po zmianie:
 	]
 }
 ~~~
+
+Pamięć orac CPU:
+
+![Memory & CPU](images/naprawianie.png)
+
+![Memory & CPU](images/naprawianie2.png)
 
 ## 1e
 Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w bazie MongoDB.
