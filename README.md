@@ -136,5 +136,12 @@ Dla zapisanych danych przygotować co najmniej 6 różnych geospatial queries (w
 
 Odp: Mapa opisana za pomocą GEOJSON znajduje się w pliku [mapa.geojson](https://github.com/henio180/NoSQL/blob/master/mapa.geojson). Pokazuje ona miejsca, które zwiedziłem.
 ~~~
-$ time mongoimport -db mapa --collection map < mapa.geojson
+$ time mongoimport -db mapa --collection map < mapa.json 
+connected to: 127.0.0.1
+2014-10-18T12:59:28.818+0200 check 9 50
+2014-10-18T12:59:28.818+0200 imported 50 objects
+
+real	0m0.117s
+user	0m0.008s
+sys	0m0.019s
 ~~~
