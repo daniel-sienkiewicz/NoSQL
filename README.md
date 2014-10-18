@@ -145,3 +145,33 @@ real	0m0.117s
 user	0m0.008s
 sys	0m0.019s
 ~~~
+
+Geospitale:
+
+~~~
+> db.map.find( { loc : { $geoWithin : { $polygon : [[ 15.915069580078123, 51.68788231035757 ], [ 16.3531494140625, 51.72957997047594 ], [ 16.57562255859375, 51.477106480966924 ], [ 16.2652587890625, 51.30400383245547 ], [ 15.6939697265625, 51.44801622351378 ], [ 15.915069580078123, 51.68788231035757 ]]}}})
+
+{ "_id" : ObjectId("5442a726523687b8da3e0b88"), "loc" : { "type" : "Point", "coordinates" : [ 16.068878173828125, 51.50190410761811 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b89"), "loc" : { "type" : "Point", "coordinates" : [ 16.200714111328125, 51.394064665922045 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b8b"), "loc" : { "type" : "Point", "coordinates" : [ 15.893096923828125, 51.4171945605445 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b8c"), "loc" : { "type" : "Point", "coordinates" : [ 15.77911376953125, 51.53096001302977 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b8d"), "loc" : { "type" : "Point", "coordinates" : [ 16.431427001953125, 51.415481636209535 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b8e"), "loc" : { "type" : "Point", "coordinates" : [ 16.224746704101562, 51.50147667659363 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0ba8"), "loc" : { "type" : "Point", "coordinates" : [ 16.08123779296875, 51.66488962182642 ] } }
+~~~
+
+~~~
+> db.map.find( { loc : { $geoWithin : { $polygon : [[ 17.742919921875, 54.97446103959508 ], [ 19.05029296875, 54.892405720815276 ], [ 19.0118408203125, 54.0690593387285 ], [ 17.127685546875, 54.02713344412544 ], [ 17.742919921875, 54.97446103959508 ]]}}})
+
+{ "_id" : ObjectId("5442a726523687b8da3e0b95"), "loc" : { "type" : "Point", "coordinates" : [ 18.65478515625, 54.34374993587144 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b96"), "loc" : { "type" : "Point", "coordinates" : [ 18.80859375, 54.61661705439048 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0b97"), "loc" : { "type" : "Point", "coordinates" : [ 18.31146240234375, 54.826007999094955 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb0"), "loc" : { "type" : "Point", "coordinates" : [ 18.244857788085938, 54.60667587855266 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb1"), "loc" : { "type" : "Point", "coordinates" : [ 18.56689453125, 54.44049878413806 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb2"), "loc" : { "type" : "Point", "coordinates" : [ 18.538742065429684, 54.51271147912779 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb3"), "loc" : { "type" : "Point", "coordinates" : [ 18.408966064453125, 54.796726693981796 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb4"), "loc" : { "type" : "Point", "coordinates" : [ 18.21121215820312, 54.83194081210015 ] } }
+{ "_id" : ObjectId("5442a726523687b8da3e0bb5"), "loc" : { "type" : "Point", "coordinates" : [ 18.41033935546875, 54.72045628479659 ] } }
+~~~
+
+[![Alt text for your video](https://github.com/rails4/asi/blob/master/lotniska.geojson)](https://github.com/rails4/asi/blob/master/lotniska.geojson)
