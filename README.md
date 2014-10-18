@@ -163,7 +163,7 @@ Geospitale:
 { "_id" : ObjectId("5442a726523687b8da3e0ba8"), "loc" : { "type" : "Point", "coordinates" : [ 16.08123779296875, 51.66488962182642 ] } }
 ~~~
 
-Wynik:
+[Wynik](1e_1.geojson):
 ![Mapa](images/mapa_1.png)
 
 ~~~
@@ -180,5 +180,5 @@ Wynik:
 { "_id" : ObjectId("5442a726523687b8da3e0bb5"), "loc" : { "type" : "Point", "coordinates" : [ 18.41033935546875, 54.72045628479659 ] } }
 ~~~
 
-Wynik:
+[Wynik](1e_1.geojson):
 ![Mapa](images/mapa_2.png)
