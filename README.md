@@ -135,6 +135,9 @@ Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w 
 Dla zapisanych danych przygotować co najmniej 6 różnych geospatial queries (w tym, co najmniej po jednym, dla obiektów Point, LineString i Polygon).
 
 Odp: Mapa opisana za pomocą GEOJSON znajduje się w pliku [mapa.geojson](https://github.com/henio180/NoSQL/blob/master/mapa.geojson). Pokazuje ona miejsca, które zwiedziłem.
+
+![Mapa](images/mapa_all.png)
+
 ~~~
 $ time mongoimport -db mapa --collection map < mapa.json 
 connected to: 127.0.0.1
@@ -173,5 +176,3 @@ Geospitale:
 { "_id" : ObjectId("5442a726523687b8da3e0bb4"), "loc" : { "type" : "Point", "coordinates" : [ 18.21121215820312, 54.83194081210015 ] } }
 { "_id" : ObjectId("5442a726523687b8da3e0bb5"), "loc" : { "type" : "Point", "coordinates" : [ 18.41033935546875, 54.72045628479659 ] } }
 ~~~
-
-[![Alt text for your video](https://github.com/rails4/asi/blob/master/lotniska.geojson)](https://github.com/rails4/asi/blob/master/lotniska.geojson)
