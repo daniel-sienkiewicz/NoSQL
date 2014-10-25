@@ -204,7 +204,7 @@ Zapytanie z użyciem "POLYGON"
 [Wynik](mapy/1d_2.geojson):
 ![Mapa](images/mapa_2.png)
 
-Zapytanie z użyciem "POINT" oraz "$near"
+Zapytanie z użyciem "POINT" oraz "$near". Miasta leżące od najbliższego do najdalszego do Polkowic:
 ~~~
 var origin = {type: "Point", coordinates: [51.5019, 16.0689]}
 > db.map.find({ loc: {$near: {$geometry: origin}} })
@@ -280,7 +280,7 @@ Wszystkie miasta w promieniu 45° od Bielska-Białęj włącznie.
 [Wynik](mapy/1d_3.geojson):
 ![Mapa](images/mapa_3.png)
 
-Miasta znajdujące się 50 km od mojego rodzinnego miasta: Polkowice:
+Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 ~~~
 > db.map.find({loc: {$near : {$geometry: { type: "Point",  coordinates: [ 16.0689, 51.5019 ] }, $maxDistance: 50000}}})
 { "_id" : ObjectId("544bf24f6211523c46759481"), "loc" : { "type" : "Point", "coordinates" : [ 16.068878173828125, 51.50190410761811 ] } }
@@ -298,3 +298,72 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta: Polkowice:
 ![Mapa](images/mapa_4.png)
 
 ##2
+* Baza jaką znalazłem: [link](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)
+* Import do bazy
+
+~~~
+$ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/styczen.csv  --headerline
+real	0m30.635s
+user	0m5.815s
+sys	0m0.471s
+
+$ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/luty.csv  --headerline
+real	0m21.186s
+user	0m5.462s
+sys	0m0.459s
+
+$ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/marzec.csv  --headerline
+real	0m22.715s
+user	0m6.260s
+sys	0m0.540s
+
+> db.samoloty.count()
+1406309
+~~~
+
+Przykładowy rekord:
+~~~
+> db.samoloty.findOne()
+{
+	"_id" : ObjectId("544c11f16211523c467594b3"),
+	"QUARTER" : 1,
+	"MONTH" : 1,
+	"ORIGIN_AIRPORT_ID" : 12478,
+	"ORIGIN_AIRPORT_SEQ_ID" : 1247802,
+	"ORIGIN_CITY_MARKET_ID" : 31703,
+	"ORIGIN" : "JFK",
+	"ORIGIN_CITY_NAME" : "New York, NY",
+	"ORIGIN_STATE_ABR" : "NY",
+	"ORIGIN_STATE_FIPS" : 36,
+	"ORIGIN_STATE_NM" : "New York",
+	"ORIGIN_WAC" : 22,
+	"DEST_AIRPORT_ID" : 12892,
+	"DEST_AIRPORT_SEQ_ID" : 1289203,
+	"DEST_CITY_MARKET_ID" : 32575,
+	"" : ""
+}
+~~~
+* [Skrypt do agregacji](scripts/zad2.js) (JavaScript)
+* [Skrypt do agregacji](scripts/zad2Ruby.rb) (Ruby)
+
+Wyniki agregacji (JavaScript):
+~~~
+$ time mongo scripts/zad2.js
+Ilość unikalnych miast: 
+299
+
+real	0m13.246s
+user	0m0.053s
+sys	0m0.014s
+~~~
+
+Wyniki agregacji (Ruby):
+~~~
+$ time ruby zad2Ruby.rb test samoloty
+Ilość unikalnych miast:
+299
+
+real	0m11.957s
+user	0m0.224s
+sys	0m0.044s
+~~~
