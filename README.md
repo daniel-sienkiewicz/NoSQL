@@ -135,7 +135,7 @@ Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w 
 
 Dla zapisanych danych przygotować co najmniej 6 różnych geospatial queries (w tym, co najmniej po jednym, dla obiektów Point, LineString i Polygon).
 
-Odp: Mapa opisana za pomocą GEOJSON znajduje się w pliku [mapa.geojson](https://github.com/henio180/NoSQL/blob/master/mapa.geojson). Pokazuje ona miejsca, które zwiedziłem.
+Odp: Mapa opisana za pomocą GEOJSON znajduje się w pliku [mapa.geojson](mapy/mapa.geojson). Pokazuje ona miejsca, które zwiedziłem.
 
 ![Mapa](images/mapa_all.png)
 
@@ -183,7 +183,7 @@ Zapytanie z użyciem "POLYGON"
 { "_id" : ObjectId("5442a726523687b8da3e0ba8"), "loc" : { "type" : "Point", "coordinates" : [ 16.08123779296875, 51.66488962182642 ] } }
 ~~~
 
-[Wynik](1d_1.geojson):
+[Wynik](mapy/1d_1.geojson):
 ![Mapa](images/mapa_1.png)
 
 Zapytanie z użyciem "POLYGON"
@@ -201,7 +201,7 @@ Zapytanie z użyciem "POLYGON"
 { "_id" : ObjectId("5442a726523687b8da3e0bb5"), "loc" : { "type" : "Point", "coordinates" : [ 18.41033935546875, 54.72045628479659 ] } }
 ~~~
 
-[Wynik](1d_2.geojson):
+[Wynik](mapy/1d_2.geojson):
 ![Mapa](images/mapa_2.png)
 
 Zapytanie z użyciem "POINT" oraz "$near"
@@ -277,7 +277,7 @@ Wszystkie miasta w promieniu 45° od Bielska-Białęj włącznie.
 { "_id" : ObjectId("544bf2506211523c467594a8"), "loc" : { "type" : "Point", "coordinates" : [ 21.595001220703125, 53.0816522833116 ] } }
 ~~~
 
-[Wynik](1d_3.geojson):
+[Wynik](mapy/1d_3.geojson):
 ![Mapa](images/mapa_3.png)
 
 Miasta znajdujące się 50 km od mojego rodzinnego miasta: Polkowice:
@@ -294,10 +294,7 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta: Polkowice:
 { "_id" : ObjectId("544bf2506211523c467594a2"), "loc" : { "type" : "Point", "coordinates" : [ 16.0675048828125, 51.879882095410224 ] } }
 { "_id" : ObjectId("544bf2506211523c46759488"), "loc" : { "type" : "Point", "coordinates" : [ 15.571746826171873, 51.26535213392538 ] } }
 ~~~
-[Wynik](1d_4.geojson):
+[Wynik](mapy/1d_4.geojson):
 ![Mapa](images/mapa_4.png)
 
 ##2
-
-	"$err" : "Can't canonicalize query: BadValue geo near accepts just one argument when querying for a GeoJSON point. Extra field found: $maxDistance: 1000.0",
-	"code" : 17287
