@@ -20,7 +20,3 @@ cli = MongoClient.new.db(db).collection(collection);
 puts "Ilość unikalnych miast:"
 
 puts cli.distinct(:ORIGIN_CITY_NAME).count();
-#cli.find.to_a.().uniq{|x| x.ORIGIN_CITY_NAME}
-#cli.find.each do |doc|
-#  puts doc["_id"]
-#end
