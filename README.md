@@ -280,4 +280,24 @@ Wszystkie miasta w promieniu 45° od Bielska-Białęj włącznie.
 [Wynik](1d_3.geojson):
 ![Mapa](images/mapa_3.png)
 
+Miasta znajdujące się 50 km od mojego rodzinnego miasta: Polkowice:
+~~~
+> db.map.find({loc: {$near : {$geometry: { type: "Point",  coordinates: [ 16.0689, 51.5019 ] }, $maxDistance: 50000}}})
+{ "_id" : ObjectId("544bf24f6211523c46759481"), "loc" : { "type" : "Point", "coordinates" : [ 16.068878173828125, 51.50190410761811 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759487"), "loc" : { "type" : "Point", "coordinates" : [ 16.224746704101562, 51.50147667659363 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759482"), "loc" : { "type" : "Point", "coordinates" : [ 16.200714111328125, 51.394064665922045 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759484"), "loc" : { "type" : "Point", "coordinates" : [ 15.893096923828125, 51.4171945605445 ] } }
+{ "_id" : ObjectId("544bf2506211523c467594a1"), "loc" : { "type" : "Point", "coordinates" : [ 16.08123779296875, 51.66488962182642 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759485"), "loc" : { "type" : "Point", "coordinates" : [ 15.77911376953125, 51.53096001302977 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759486"), "loc" : { "type" : "Point", "coordinates" : [ 16.431427001953125, 51.415481636209535 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759483"), "loc" : { "type" : "Point", "coordinates" : [ 16.171875, 51.19827878319755 ] } }
+{ "_id" : ObjectId("544bf2506211523c467594a2"), "loc" : { "type" : "Point", "coordinates" : [ 16.0675048828125, 51.879882095410224 ] } }
+{ "_id" : ObjectId("544bf2506211523c46759488"), "loc" : { "type" : "Point", "coordinates" : [ 15.571746826171873, 51.26535213392538 ] } }
+~~~
+[Wynik](1d_4.geojson):
+![Mapa](images/mapa_4.png)
+
 ##2
+
+	"$err" : "Can't canonicalize query: BadValue geo near accepts just one argument when querying for a GeoJSON point. Extra field found: $maxDistance: 1000.0",
+	"code" : 17287
