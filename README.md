@@ -150,8 +150,27 @@ user	0m0.008s
 sys	0m0.019s
 ~~~
 
-Geospitale:
+Przykładowy rekord:
+~~~
+> db.map.findOne()
+{
+	"_id" : ObjectId("544bf24f6211523c46759481"),
+	"loc" : {
+		"type" : "Point",
+		"coordinates" : [
+			16.068878173828125,
+			51.50190410761811
+		]
+	}
+}
+~~~
 
+Na początku dodajemy geo-indeks do rekordów:
+~~~
+> db.map.ensureIndex({"loc" : "2dsphere"})
+~~~
+
+Zapytanie z użyciem "POLYGON"
 ~~~
 > db.map.find( { loc : { $geoWithin : { $polygon : [[ 15.62530517578125, 51.60266574567799 ], [ 16.2322998046875, 51.84765608216451 ], [ 16.8365478515625, 51.49677467073002 ], [ 15.836791992187498, 51.15867686442365 ], [ 15.62530517578125, 51.60266574567799 ]]}}})
 
@@ -167,6 +186,7 @@ Geospitale:
 [Wynik](1d_1.geojson):
 ![Mapa](images/mapa_1.png)
 
+Zapytanie z użyciem "POLYGON"
 ~~~
 > db.map.find( { loc : { $geoWithin : { $polygon : [[ 17.742919921875, 54.97446103959508 ], [ 19.05029296875, 54.892405720815276 ], [ 19.0118408203125, 54.0690593387285 ], [ 17.127685546875, 54.02713344412544 ], [ 17.742919921875, 54.97446103959508 ]]}}})
 
@@ -184,8 +204,8 @@ Geospitale:
 [Wynik](1d_2.geojson):
 ![Mapa](images/mapa_2.png)
 
+Zapytanie z użyciem "POINT" oraz "$near"
 ~~~
-> db.map.ensureIndex({"loc" : "2dsphere"})
 var origin = {type: "Point", coordinates: [51.5019, 16.0689]}
 > db.map.find({ loc: {$near: {$geometry: origin}} })
 ~~~
@@ -244,9 +264,10 @@ Wynik
 { "_id" : ObjectId("544bdbc5c3b92a36a1b1fcf1"), "loc" : { "type" : "Point", "coordinates" : [ 10.0030517578125, 53.54030739150022 ] } }
 ~~~
 
+Zapytanie z użyciem "$geoWithin" oraz "$center".
 Wszystkie miasta w promieniu 45° od Bielska-Białęj włącznie.
 ~~~
->db.map.find({loc: {$geoWithin: {$center: [[49.9804, 20.0652], 45]}}})
+> db.map.find({loc: {$geoWithin: {$center: [[49.9804, 20.0652], 45]}}})
 { "_id" : ObjectId("544bf2506211523c4675948d"), "loc" : { "type" : "Point", "coordinates" : [ 21.02783203125, 52.24125614966341 ] } }
 { "_id" : ObjectId("544bf2506211523c46759495"), "loc" : { "type" : "Point", "coordinates" : [ 19.955291748046875, 49.29199347427707 ] } }
 { "_id" : ObjectId("544bf2506211523c46759496"), "loc" : { "type" : "Point", "coordinates" : [ 19.94842529296875, 50.055375373800004 ] } }
