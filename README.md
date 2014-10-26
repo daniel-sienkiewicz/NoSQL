@@ -297,20 +297,20 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 [Wynik](mapy/1d_4.geojson):
 ![Mapa](images/mapa_4.png)
 
-##2
+## 2
 * Baza jaką znalazłem: [link](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)
 * Import do bazy
 
 ~~~
 $ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/styczen.csv  --headerline
-real	0m30.635s
-user	0m5.815s
-sys	0m0.471s
+real	0m22.312s
+user	0m4.462s
+sys	0m0.481s
 
 $ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/luty.csv  --headerline
-real	0m21.186s
-user	0m5.462s
-sys	0m0.459s
+real	0m16.860s
+user	0m4.111s
+sys	0m0.548s
 
 $ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/marzec.csv  --headerline
 real	0m22.715s
@@ -325,21 +325,15 @@ Przykładowy rekord:
 ~~~
 > db.samoloty.findOne()
 {
-	"_id" : ObjectId("544c11f16211523c467594b3"),
-	"QUARTER" : 1,
-	"MONTH" : 1,
-	"ORIGIN_AIRPORT_ID" : 12478,
-	"ORIGIN_AIRPORT_SEQ_ID" : 1247802,
-	"ORIGIN_CITY_MARKET_ID" : 31703,
-	"ORIGIN" : "JFK",
+	"_id" : ObjectId("544c29db0f6b649d86e66d31"),
+	"FL_DATE" : "2014-01-01",
 	"ORIGIN_CITY_NAME" : "New York, NY",
-	"ORIGIN_STATE_ABR" : "NY",
-	"ORIGIN_STATE_FIPS" : 36,
-	"ORIGIN_STATE_NM" : "New York",
-	"ORIGIN_WAC" : 22,
-	"DEST_AIRPORT_ID" : 12892,
-	"DEST_AIRPORT_SEQ_ID" : 1289203,
-	"DEST_CITY_MARKET_ID" : 32575,
+	"DEST_CITY_NAME" : "Los Angeles, CA",
+	"DEP_TIME" : 914,
+	"DEP_DELAY" : 14,
+	"AIR_TIME" : 359,
+	"FLIGHTS" : 1,
+	"DISTANCE" : 2475,
 	"" : ""
 }
 ~~~
@@ -348,13 +342,20 @@ Przykładowy rekord:
 
 Wyniki agregacji (JavaScript):
 ~~~
-$ time mongo scripts/zad2.js
-Ilość unikalnych miast: 
+$ time mongo zad2.js
+Ilość unikalnych miast:
 299
+Liczba lotów, których odległość była większa niż 2500 km:
+26679
+Najdalszy lot:
+DBQuery: test.samoloty -> { "query" : { }, "orderby" : { "DISTANCE" : -1 } }
+Najczęstsze miasto
+Moab, UT: 52
 
-real	0m13.246s
-user	0m0.053s
-sys	0m0.014s
+real	0m51.765s
+user	0m17.225s
+sys	0m0.438s
+
 ~~~
 
 Wyniki agregacji (Ruby):
@@ -362,8 +363,14 @@ Wyniki agregacji (Ruby):
 $ time ruby zad2Ruby.rb test samoloty
 Ilość unikalnych miast:
 299
+Liczba lotów, których odległość była większa niż 2500 km:
+26679
+Najdalszy lot:
+4983.0
+Najczęstsze miasto:
 
-real	0m11.957s
-user	0m0.224s
-sys	0m0.044s
+real	0m15.817s
+user	0m0.360s
+sys	0m0.061s
+
 ~~~
