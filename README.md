@@ -343,34 +343,37 @@ Przykładowy rekord:
 Wyniki agregacji (JavaScript):
 ~~~
 $ time mongo zad2.js
-Ilość unikalnych miast:
+1. Ilość unikalnych miast:
 299
-Liczba lotów, których odległość była większa niż 2500 km:
+2. Liczba lotów, których odległość była większa niż 2500 km:
 26679
-Najdalszy lot:
-DBQuery: test.samoloty -> { "query" : { }, "orderby" : { "DISTANCE" : -1 } }
-Najczęstsze miasto
-Moab, UT: 52
+3. Najdalszy lot:
+4983
+4. Najczęstsze miasto:
+Atlanta, GA 91468
+5. Suma wszytskich lotów:
+1112417183
 
-real	0m51.765s
-user	0m17.225s
-sys	0m0.438s
-
+real	0m44.779s
+user	0m0.101s
+sys	0m0.060s
 ~~~
 
 Wyniki agregacji (Ruby):
 ~~~
 $ time ruby zad2Ruby.rb test samoloty
-Ilość unikalnych miast:
+1. Ilość unikalnych miast:
 299
-Liczba lotów, których odległość była większa niż 2500 km:
+2. Liczba lotów, których odległość była większa niż 2500 km:
 26679
-Najdalszy lot:
+3. Najdalszy lot:
 4983.0
-Najczęstsze miasto:
+4. Najczęstsze miasto:
+Atlanta, GA 91468
+5. Suma wszytskich lotów:
+1112417183.0
 
-real	0m15.817s
-user	0m0.360s
-sys	0m0.061s
-
+real	0m24.731s
+user	0m0.326s
+sys	0m0.115s
 ~~~
