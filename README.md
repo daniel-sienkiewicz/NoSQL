@@ -30,7 +30,7 @@ user 0m46.461s
 sys 2m8.678s
 ~~~
 
-Następnie import pliku
+Następnie import pliku dla MongoDB
 ~~~
 $ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
 real 8m15.141s
@@ -44,10 +44,32 @@ Pamięć orac CPU:
 
 ![Memory & CPU](images/import2.png)
 
+
+Dla PostgreSQL - przed importem należy usunąć pierwszą linię zawierającą nagłowek CSV
+~~~
+sed '1d' naprawionyTrain.csv > naprawionyTrain1.csv 
+~~~
+
+Stworzenie tabeli oraz import pliku do bazy PostgreSQL
+~~~
+CREATE TABLE tra (id int, title varchar(255), body varchar(10485760), tags varchar(10000));
+COPY tra FROM '/home/henio/naprawionyTrain1.csv' DELIMITER ',' CSV;
+
+real 9m44.445s
+user 0m0.48s
+sys 0m0.032s
+~~~
+
+Pamięć orac CPU:
+
+![Memory & CPU](images/import3.png)
+
+![Memory & CPU](images/import4.png)
+
 ## 1b
 Zliczyć liczbę zaimportowanych rekordów (Odpowiedź: powinno ich być 6_034_195).
 
-Odp:
+Odp dla MongoDB
 ~~~
 > db.train.count()
 6034195
@@ -57,12 +79,25 @@ user 0m0.059s
 sys 0m0.008s
 ~~~
 
+Odp dla PostgreSQL
+~~~
+postgres=# select count (*) from tra;
+  count  
+---------
+ 6034195
+(1 row)
+
+real	5m14.991s
+user	0m0.050s
+sys	0m0.040s
+~~~
+
 ## 1c
 (Zamiana formatu danych.) Zamienić string zawierający tagi na tablicę napisów z tagami następnie zliczyć wszystkie tagi i wszystkie różne tagi.
 
 W tym zadaniu należy napisać program, który to zrobi. W przypadku MongoDB należy użyć jednego ze sterowników ze  strony MongoDB Ecosystem. W przypadku PostgreSQL – należy to zrobić w jakikolwiek sposób.
 
-Odp: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js))
+Odp dla MongoDB: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js))
 ~~~
 $ time mongo scripts/tags.js
 
