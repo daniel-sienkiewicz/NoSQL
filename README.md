@@ -298,9 +298,15 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 ![Mapa](images/mapa_4.png)
 
 ## 2
-* Baza jaką znalazłem: [link](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)
-* Import do bazy
+1. Wyszukać w sieci dane zawierające co najmniej 1_000_000 rekordów/jsonów.
+2. Dane zapisać w bazie MongoDB.
+3. Przygotować w JavaScript co najmniej cztery agregacje korzystające z Aggregation Pipeline.
+4. Zaprogramować i wykonać wszystkie agregacje z pkt. 3 w_innym niż JavaScript języku programowania. Skorzystać z jednego z driverów wymienionych na stronie MongoDB Drivers.
+5. Wyniki przedstawić w postaci tabelek, graficznej (wykresów, itp.).
 
+Baza jaką znalazłem: [link](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)
+
+Import do bazy
 ~~~
 $ time mongoimport -c samoloty --type csv --file /home/henio/Desktop/styczen.csv  --headerline
 real	0m22.312s
