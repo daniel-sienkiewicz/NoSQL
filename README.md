@@ -17,9 +17,10 @@
 * Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0 
 
 ##MMS
-Do bazy danych został podpięty system Mongo MMS
-*username: sienkiewicz@project-midas.com
-*group: Henio
+Do bazy danych został podpięty system Mongo MMS:
+
+* username: sienkiewicz@project-midas.com
+* group: Henio
 
 ## 1a
 Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na swoim komputerze, danych z pliku Train.csv bazy:
