@@ -2,10 +2,12 @@
 
 * [Komputer](#Komputer)
 * [Mongo MMS](#MMS)
+* [Dane odnośnie bazy](#Dane odnośnie bazy)
 * [Zadanie 1a](#1a)
 * [Zadanie 1b](#1b)
 * [Zadanie 1c](#1c)
 * [Zadanie 1d](#1d)
+* [Uwagi na temat nowej wersji Mongo](#Uwagi na temat nowej wersji Mongo)
 * [Zadanie 2](#2)
 
 ## Komputer
@@ -16,11 +18,16 @@
 * OS: Ubuntu 14.04 LTS x64
 * Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0 
 
-##MMS
-Do bazy danych został podpięty system Mongo MMS:
+## MMS
+Do bazy danych został podpięty system [Mongo MMS](http://mms.mongodb.com):
 
 * username: sienkiewicz@project-midas.com
 * group: Henio
+
+## Dane odnośnie bazy
+![All](images/all.png)
+
+![All](images/all1.png)
 
 ## 1a
 Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na swoim komputerze, danych z pliku Train.csv bazy:
@@ -39,7 +46,7 @@ sys 2m8.678s
 
 Następnie import pliku dla MongoDB 2.6.5
 ~~~
-$ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
+$ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv --headerline --dbpath /home/henio/mongodata/
 real 8m15.141s
 user 3m58.573s
 sys 0m22.813s
@@ -55,6 +62,9 @@ Pamięć orac CPU:
 Następnie import pliku dla MongoDB 2.8.0 rc0
 ~~~
 $ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
+real	9m17.431s
+user	4m1.100s
+sys	0m24.152s
 ~~~
 
 Pamięć orac CPU:
@@ -381,6 +391,9 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 ~~~
 [Wynik](mapy/1d_4.geojson):
 ![Mapa](images/mapa_4.png)
+
+## Uwagi na temat nowej wersji Mongo
+Jak widać Mongo 2.8.0 rc0 okazał się szybszy od poprzedniej wersji 2.6.5 - jest to spowodowane dołączeniem mechanizmu [Wired Tiger](http://www.wiredtiger.com/).
 
 ## 2
 1. Wyszukać w sieci dane zawierające co najmniej 1_000_000 rekordów/jsonów.
