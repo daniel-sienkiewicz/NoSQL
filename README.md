@@ -1,6 +1,7 @@
 # Daniel Sienkiewicz (206358) NoSQL - MongoDB
 
 * [Komputer](#Komputer)
+* [Mongo MMS](#MMS)
 * [Zadanie 1a](#1a)
 * [Zadanie 1b](#1b)
 * [Zadanie 1c](#1c)
@@ -13,7 +14,12 @@
 * RAM: 3,072 (2,048 + 1,024) MB, DDR3 RAM (1066 MHz)
 * Disk: 320 GB, 5,400 r/min
 * OS: Ubuntu 14.04 LTS x64
-* Data base: MongoDB version: 2.6.5
+* Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0 
+
+##MMS
+Do bazy danych został podpięty system Mongo MMS
+*username: sienkiewicz@project-midas.com
+*group: Henio
 
 ## 1a
 Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na swoim komputerze, danych z pliku Train.csv bazy:
@@ -30,7 +36,7 @@ user 0m46.461s
 sys 2m8.678s
 ~~~
 
-Następnie import pliku dla MongoDB
+Następnie import pliku dla MongoDB 2.6.5
 ~~~
 $ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
 real 8m15.141s
@@ -44,6 +50,20 @@ Pamięć orac CPU:
 
 ![Memory & CPU](images/import2.png)
 
+
+Następnie import pliku dla MongoDB 2.8.0 rc0
+~~~
+$ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
+
+~~~
+
+Pamięć orac CPU:
+
+![Memory & CPU](images/import5.png)
+
+![Memory & CPU](images/import6.png)
+
+![Memory & CPU](images/import7.png)
 
 Dla PostgreSQL - przed importem należy usunąć pierwszą linię zawierającą nagłowek CSV
 ~~~
@@ -69,7 +89,7 @@ Pamięć orac CPU:
 ## 1b
 Zliczyć liczbę zaimportowanych rekordów (Odpowiedź: powinno ich być 6_034_195).
 
-Odp dla MongoDB
+Odp dla MongoDB 2.6.5
 ~~~
 > db.train.count()
 6034195
@@ -77,6 +97,16 @@ Odp dla MongoDB
 real 0m0.067s
 user 0m0.059s
 sys 0m0.008s
+~~~
+
+Odp dla MongoDB 2.8.0 rc0
+~~~
+> db.train.count()
+6034195
+
+real	0m1.350s
+user	0m0.057s
+sys	0m0.026s
 ~~~
 
 Odp dla PostgreSQL
@@ -97,7 +127,7 @@ sys	0m0.040s
 
 W tym zadaniu należy napisać program, który to zrobi. W przypadku MongoDB należy użyć jednego ze sterowników ze  strony MongoDB Ecosystem. W przypadku PostgreSQL – należy to zrobić w jakikolwiek sposób.
 
-Odp dla MongoDB: Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js))
+Odp dla MongoDB 2.6.5:
 ~~~
 $ time mongo scripts/tags.js
 
@@ -109,7 +139,33 @@ user 59m35.977s
 sys 4m22.558s
 ~~~
 
-Przykłady tagów, które wystąpiły tylko RAZ:
+Pamięć orac CPU:
+
+![Memory & CPU](images/naprawianie.png)
+
+![Memory & CPU](images/naprawianie2.png)
+
+Odp dla MongoDB 2.8.0 rc0:
+~~~
+$ time mongo scripts/tags.js
+
+Wszystkie: 17409994
+Unikalne: 42048
+
+real	109m36.350s
+user	56m33.976s
+sys	4m32.039s
+~~~
+
+Pamięć orac CPU:
+
+![Memory & CPU](images/naprawianie3.png)
+
+![Memory & CPU](images/naprawianie4.png)
+
+![Memory & CPU](images/naprawianie5.png)
+
+Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js)). Przykłady tagów, które wystąpiły tylko RAZ:
 ~~~
 *qset
 *cportlet
@@ -158,12 +214,6 @@ Po zmianie:
 	]
 }
 ~~~
-
-Pamięć orac CPU:
-
-![Memory & CPU](images/naprawianie.png)
-
-![Memory & CPU](images/naprawianie2.png)
 
 ## 1d
 Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w bazie MongoDB.
