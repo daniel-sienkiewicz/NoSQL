@@ -55,7 +55,6 @@ Pamięć orac CPU:
 Następnie import pliku dla MongoDB 2.8.0 rc0
 ~~~
 $ time mongoimport -c train --type csv --file /media/Data/naprawionyTrain.csv  --headerline --dbpath /home/henio/mongodata/
-
 ~~~
 
 Pamięć orac CPU:
