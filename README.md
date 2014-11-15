@@ -90,6 +90,15 @@ user 0m0.48s
 sys 0m0.032s
 ~~~
 
+~~~
+CREATE TABLE tra (id int PRIMARY KEY, title varchar(255), body varchar(10485760), tags varchar(10000));
+COPY tra FROM '/home/henio/naprawionyTrain1.csv' DELIMITER ',' CSV;
+
+real	14m6.332s
+user	0m0.048s
+sys	0m0.034s
+~~~
+
 Pamięć orac CPU:
 
 ![Memory & CPU](images/import3.png)
@@ -130,6 +139,19 @@ postgres=# select count (*) from tra;
 real	5m14.991s
 user	0m0.050s
 sys	0m0.040s
+~~~
+
+Dla PostgreSQL z PRIMARY KEY
+~~~
+postgres=# select count (*) from tra;
+  count  
+---------
+ 6034195
+(1 row)
+
+real	1m7.456s
+user	0m0.066s
+sys	0m0.033s
 ~~~
 
 ## 1c
