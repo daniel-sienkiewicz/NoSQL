@@ -471,12 +471,26 @@ Wyniki agregacji (JavaScript):
 $ time mongo zad2.js
 1. Ilość unikalnych miast:
 299
+
 2. Liczba lotów, których odległość była większa niż 2500 km:
 26679
-3. Najdalszy lot:
+
+3. Najdalsze loty:
 4983
-4. Najczęstsze miasto:
-Atlanta, GA 91468
+4963
+4817
+
+4. Najczęstsze miasta:
++------------------------------+
+| Nazwa                 | ilosc|
++------------------------------+
+| Atlanta, GA           | 91468|
++------------------------------+
+| Chicago, IL           | 84317|
++------------------------------+
+| Dallas/Fort Worth, TX | 68481|
++------------------------------+
+
 5. Suma wszytskich lotów:
 1112417183
 
@@ -490,12 +504,26 @@ Wyniki agregacji (Ruby):
 $ time ruby zad2Ruby.rb test samoloty
 1. Ilość unikalnych miast:
 299
+
 2. Liczba lotów, których odległość była większa niż 2500 km:
 26679
-3. Najdalszy lot:
+
+3. Najdalsze loty:
 4983.0
-4. Najczęstsze miasto:
-Atlanta, GA 91468
+4963.0
+4817.0
+
+4. Najczęstsze miasta:
++------------------------------+
+| Nazwa                 | ilosc|
++------------------------------+
+| Atlanta, GA           | 91468|
++------------------------------+
+| Chicago, IL           | 84317|
++------------------------------+
+| Dallas/Fort Worth, TX | 68481|
++------------------------------+
+
 5. Suma wszytskich lotów:
 1112417183.0
 

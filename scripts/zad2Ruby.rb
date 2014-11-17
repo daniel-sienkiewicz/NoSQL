@@ -26,13 +26,17 @@ puts cli.distinct(:DEST_CITY_NAME).count()
 puts "2. Liczba lotów, których odległość była większa niż 2500 km:"
 puts cli.find(:DISTANCE => {"$gt" => 2500}).count()
 
-puts "3. Najdalszy lot:"
-puts cli.find().sort({"DISTANCE" => -1}).limit(1).first()["DISTANCE"]
+puts "3. Najdalsze loty:"
+loty = cli.distinct(:DISTANCE).to_a.sort{ |x,y| y <=> x }
+puts loty[0]
+puts loty[1]
+puts loty[2]
 
-
-puts "4. Najczęstsze miasto:"
-miasto = cli.aggregate([{"$group" => {_id: "$DEST_CITY_NAME", count: {"$sum" => 1}}}, {"$sort" => {count: -1}},{"$limit" => 1}])
-puts "#{miasto[0]['_id']} #{miasto[0]['count']}"
+puts "4. Najczęstsze miasta:"
+miasto = cli.aggregate([{"$group" => {_id: "$DEST_CITY_NAME", count: {"$sum" => 1}}}, {"$sort" => {count: -1}},{"$limit" => 3}])
+puts "#{miasto[0]['_id']} #{miasto[0]['count']}|"
+puts "#{miasto[1]['_id']} #{miasto[1]['count']}|"
+puts "#{miasto[2]['_id']} #{miasto[2]['count']}|"
 
 puts "5. Suma wszytskich lotów:"
 puts cli.aggregate([{ "$group" => { _id: "null", total: { "$sum" => "$DISTANCE" }}}])[0]["total"]
