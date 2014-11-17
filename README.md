@@ -1,14 +1,22 @@
 # Daniel Sienkiewicz (206358) NoSQL - MongoDB
 
-* [Komputer](#Komputer)
-* [Mongo MMS](#MMS)
-* [Dane odnośnie bazy](#Dane odnośnie bazy)
-* [Zadanie 1a](#1a)
-* [Zadanie 1b](#1b)
-* [Zadanie 1c](#1c)
-* [Zadanie 1d](#1d)
-* [Uwagi na temat nowej wersji Mongo](#Uwagi na temat nowej wersji Mongo)
-* [Zadanie 2](#2)
+<!-- MarkdownTOC -->
+
+- [Komputer][komputer]
+- [MMS][mms]
+- [Dane odnośnie bazy][dane-odnośnie-bazy]
+- [1a][1a]
+- [1b][1b]
+- [  count][--count]
+- [  count][--count-1]
+- [1c][1c]
+- [    tags][----tags]
+- [    tags][----tags-1]
+- [Podsumowanie czasów][podsumowanie-czasów]
+- [1d][1d]
+- [2][2]
+
+<!-- /MarkdownTOC -->
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
@@ -277,6 +285,25 @@ Po zmianie:
 (1 row)
 ~~~
 
+## Podsumowanie czasów
+~~~
++---------+------------------+-------------------+-----------------+
+| Zadanie | MongoDB 2.6.5    | MongoDB 2.8.0     | PosgtreSQL      |
++---------+------------------+-------------------+-----------------+
+|         | real 8m15.141s   | real 9m17.431s    | real 9m44.445s  |
+|   1a    | user 3m58.573s   | user 9m17.431s    | user 0m0.48s    |
+|         | sys 0m22.813s    | sys  0m24.152s    | sys 0m0.032s    |
++---------+------------------+-------------------+-----------------+
+|         | real 0m0.067s    | real  0m1.350s    | real  1m7.456s  |
+|   1b    | ser 0m0.059s     | user  0m0.057s    | user  0m0.066s  |
+|         | sys 0m0.008s     | sys   0m0.026s    | sys   0m0.033s  |
++---------+------------------+-------------------+-----------------+
+|         | real 100m53.022s | real  109m36.350s | real  45m0.618s |
+|   1c    | user 59m35.977s  | user  56m33.976s  | user  0m0.068s  | 
+|         | sys 4m22.558s    | sys   4m32.039s   | sys   0m0.024s  |
++---------+------------------+-------------------+-----------------+
+~~~
+
 ## 1d
 Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w bazie MongoDB.
 
@@ -443,9 +470,6 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 ~~~
 [Wynik](mapy/1d_4.geojson):
 ![Mapa](images/mapa_4.png)
-
-## Uwagi na temat nowej wersji Mongo
-Jak widać Mongo 2.8.0 rc0 okazał się szybszy od poprzedniej wersji 2.6.5 - jest to spowodowane dołączeniem mechanizmu [Wired Tiger](http://www.wiredtiger.com/).
 
 ## 2
 1. Wyszukać w sieci dane zawierające co najmniej 1_000_000 rekordów/jsonów.
