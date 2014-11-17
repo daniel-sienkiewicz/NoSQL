@@ -208,6 +208,12 @@ user	0m0.068s
 sys	0m0.024s
 ~~~
 
+Pamięć orac CPU:
+
+![Memory & CPU](images/naprawianie6.png)
+
+![Memory & CPU](images/naprawianie7.png)
+
 Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js)). Przykłady tagów, które wystąpiły tylko RAZ:
 ~~~
 *qset
