@@ -1,22 +1,15 @@
 # Daniel Sienkiewicz (206358) NoSQL - MongoDB
 
-<!-- MarkdownTOC -->
-
-- [Komputer][komputer]
-- [MMS][mms]
-- [Dane odnośnie bazy][dane-odnośnie-bazy]
-- [1a][1a]
-- [1b][1b]
-- [  count][--count]
-- [  count][--count-1]
-- [1c][1c]
-- [    tags][----tags]
-- [    tags][----tags-1]
-- [Podsumowanie czasów][podsumowanie-czasów]
-- [1d][1d]
-- [2][2]
-
-<!-- /MarkdownTOC -->
+- [Daniel Sienkiewicz (206358) NoSQL - MongoDB](#daniel-sienkiewicz-206358-nosql---mongodb)
+    - [Komputer](#komputer)
+    - [Mongo MMS](#mongo-mms)
+    - [Dane odnosnie bazy](#dane-odnosnie-bazy)
+    - [Zadanie 1a](#zadanie-1a)
+    - [Zadanie 1b](#zadanie-1b)
+    - [Zadanie 1c](#zadanie-1c)
+    - [Podsumowanie czasow](#podsumowanie-czasow)
+    - [Zadanie 1d](#zadanie-1d)
+    - [Zadanie 2](#zadanie-2)
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
@@ -26,18 +19,18 @@
 * OS: Ubuntu 14.04 LTS x64
 * Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0, PostgreSQL 9.4beta3
 
-## MMS
+## Mongo MMS
 Do bazy danych został podpięty system [Mongo MMS](http://mms.mongodb.com):
 
 * username: sienkiewicz@project-midas.com
 * group: Henio
 
-## Dane odnośnie bazy
+## Dane odnosnie bazy
 ![All](images/all.png)
 
 ![All](images/all1.png)
 
-## 1a
+## Zadanie 1a
 Zadanie 1a polega na zaimportowaniu, do systemów baz danych uruchomionych na swoim komputerze, danych z pliku Train.csv bazy:
 
 * MongoDB
@@ -114,7 +107,7 @@ Pamięć orac CPU:
 
 ![Memory & CPU](images/import4.png)
 
-## 1b
+## Zadanie 1b
 Zliczyć liczbę zaimportowanych rekordów (Odpowiedź: powinno ich być 6_034_195).
 
 Odp dla MongoDB 2.6.5
@@ -164,7 +157,7 @@ sys	0m0.033s
 ~~~
 Można to zrobić jeszcze szybciej kożystając z tabeli information _schema i wypisując wstawione rekordy, od których należy odjąć usunięte.
 
-## 1c
+## Zadanie 1c
 (Zamiana formatu danych.) Zamienić string zawierający tagi na tablicę napisów z tagami następnie zliczyć wszystkie tagi i wszystkie różne tagi.
 
 W tym zadaniu należy napisać program, który to zrobi. W przypadku MongoDB należy użyć jednego ze sterowników ze  strony MongoDB Ecosystem. W przypadku PostgreSQL – należy to zrobić w jakikolwiek sposób.
@@ -285,7 +278,7 @@ Po zmianie:
 (1 row)
 ~~~
 
-## Podsumowanie czasów
+## Podsumowanie czasow
 ~~~
 +---------+------------------+-------------------+-----------------+
 | Zadanie | MongoDB 2.6.5    | MongoDB 2.8.0     | PosgtreSQL      |
@@ -304,7 +297,7 @@ Po zmianie:
 +---------+------------------+-------------------+-----------------+
 ~~~
 
-## 1d
+## Zadanie 1d
 Wyszukać w sieci dane zawierające obiekty GeoJSON. Następnie dane zapisać w bazie MongoDB.
 
 Dla zapisanych danych przygotować co najmniej 6 różnych geospatial queries (w tym, co najmniej po jednym, dla obiektów Point, LineString i Polygon).
@@ -471,7 +464,7 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 [Wynik](mapy/1d_4.geojson):
 ![Mapa](images/mapa_4.png)
 
-## 2
+## Zadanie 2
 1. Wyszukać w sieci dane zawierające co najmniej 1_000_000 rekordów/jsonów.
 2. Dane zapisać w bazie MongoDB.
 3. Przygotować w JavaScript co najmniej cztery agregacje korzystające z Aggregation Pipeline.
