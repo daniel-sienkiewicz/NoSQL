@@ -6,7 +6,7 @@ print(db.samoloty.find({ $where : "(this.DISTANCE >= 2500)" }).count());
 
 print("3. Najdalsze loty:");
 loty = db.samoloty.distinct("DISTANCE").sort(function(a, b){return b-a});
-print(loty[0]);
+print(loty[0]["DEST_CITY_NAME"]);
 print(loty[1]);
 print(loty[2]);
 

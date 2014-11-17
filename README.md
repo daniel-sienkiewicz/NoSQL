@@ -16,7 +16,7 @@
 * RAM: 3,072 (2,048 + 1,024) MB, DDR3 RAM (1066 MHz)
 * Disk: 320 GB, 5,400 r/min
 * OS: Ubuntu 14.04 LTS x64
-* Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0 
+* Data base: MongoDB version: 2.6.5, MongoDB version: 2.8.0 rc0, PostgreSQL 9.4beta3
 
 ## MMS
 Do bazy danych został podpięty system [Mongo MMS](http://mms.mongodb.com):
@@ -98,6 +98,7 @@ real	14m6.332s
 user	0m0.048s
 sys	0m0.034s
 ~~~
+Można to zrobić jeszcze szybciej tworząc tabelę a dopiero później za pomocą polecenia ALTER dodać klucz główny (PRIMARY KEY) ponieważ indeks bazy zostanie przebudowany tylko raz, a nie po każdym wstawieniu.
 
 Pamięć orac CPU:
 
@@ -130,7 +131,7 @@ sys	0m0.026s
 
 Odp dla PostgreSQL
 ~~~
-postgres=# select count (*) from tra;
+postgres=# SELECT count (*) FROM tra;
   count  
 ---------
  6034195
@@ -143,7 +144,7 @@ sys	0m0.040s
 
 Dla PostgreSQL z PRIMARY KEY
 ~~~
-postgres=# select count (*) from tra;
+postgres=# SELECT count (*) FROM tra;
   count  
 ---------
  6034195
@@ -153,6 +154,7 @@ real	1m7.456s
 user	0m0.066s
 sys	0m0.033s
 ~~~
+Można to zrobić jeszcze szybciej kożystając z tabeli information _schema i wypisując wstawione rekordy, od których należy odjąć usunięte.
 
 ## 1c
 (Zamiana formatu danych.) Zamienić string zawierający tagi na tablicę napisów z tagami następnie zliczyć wszystkie tagi i wszystkie różne tagi.
@@ -197,6 +199,15 @@ Pamięć orac CPU:
 
 ![Memory & CPU](images/naprawianie5.png)
 
+Odp dla PostgreSQL
+~~~
+=# UPDATE tra SET tags = string_to_array(tags, ' ');
+
+real	45m0.618s
+user	0m0.068s
+sys	0m0.024s
+~~~
+
 Wszystkie oraz unikale tagi są zliczane przez skrypt napisany w języku JavaScript ([tags.js](https://github.com/henio180/NoSQL/blob/master/scripts/tags.js)). Przykłady tagów, które wystąpiły tylko RAZ:
 ~~~
 *qset
@@ -228,6 +239,13 @@ Przed zmianą:
 	"body" : "<p>I'd like to check if an uploaded file is an image file (e.g png, jpg, jpeg, gif, bmp) or another file. The problem is that I'm using Uploadify to upload the files, which changes the mime type and gives a 'text/octal' or something as the mime type, no matter which file type you upload.</p>  <p>Is there a way to check if the uploaded file is an image apart from checking the file extension using PHP?</p> ",
 	"tags" : "php image-processing file-upload upload mime-types
 }
+
+=# SELECT tags FROM tra LIMIT 1;
+    tags     
+-------------
+ jquery html
+(1 row)
+
 ~~~
 
 Po zmianie:
@@ -245,6 +263,12 @@ Po zmianie:
 		"mime-types"
 	]
 }
+
+=# SELECT tags FROM tra LIMIT 1;
+    tags     
+-------------
+ {jquery, html}
+(1 row)
 ~~~
 
 ## 1d
