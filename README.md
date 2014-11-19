@@ -9,8 +9,6 @@
     - [Zadanie 1c](#zadanie-1c)
     - [Podsumowanie czasow](#podsumowanie-czasow)
     - [Zadanie 1d](#zadanie-1d)
-    - [Zadanie 2](#zadanie-2)
-    - [Podsumowanie czasow 2](#podsumowanie-czasow-2)
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
