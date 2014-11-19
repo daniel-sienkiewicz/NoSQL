@@ -9,6 +9,8 @@
     - [Zadanie 1c](#zadanie-1c)
     - [Podsumowanie czasow](#podsumowanie-czasow)
     - [Zadanie 1d](#zadanie-1d)
+    - [Zadanie 2](#zadanie-2)
+    - [Dane odnosnie bazy](#dane-odnosnie-bazy-2)
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
@@ -472,7 +474,7 @@ Miasta znajdujące się 50 km od mojego rodzinnego miasta - Polkowice:
 
 Baza jaką znalazłem: [link](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)
 
-## Dane odnosnie bazy
+## Dane odnosnie bazy 2
 ![All](images/all3.png)
 
 ![All](images/all4.png)
