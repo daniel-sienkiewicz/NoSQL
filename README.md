@@ -10,6 +10,7 @@
     - [Podsumowanie czasow](#podsumowanie-czasow)
     - [Zadanie 1d](#zadanie-1d)
     - [Zadanie 2](#zadanie-2)
+    - [Podsumowanie czasow 2](#podsumowanie-czasow-2)
 
 ## Komputer
 * Computer: Toshiba C650 - 1C2
@@ -540,10 +541,6 @@ $ time mongo zad2.js
 
 5. Suma wszytskich lotów:
 1112417183
-
-real	0m44.779s
-user	0m0.101s
-sys	0m0.060s
 ~~~
 
 Wyniki agregacji (Ruby):
@@ -573,8 +570,19 @@ $ time ruby zad2Ruby.rb test samoloty
 
 5. Suma wszytskich lotów:
 1112417183.0
+~~~
 
-real	0m24.731s
-user	0m0.326s
-sys	0m0.115s
+## Podsumowanie czasow 2
+~~~
++---------+------------------+-------------------+
+| Zadanie | MongoDB 2.6.5    | MongoDB 2.8.0     |
++---------+------------------+-------------------+
+|         | real 0m44.779s   | real 0m40.431s    |
+|   JS    | user 0m0.101s    | user 0m0.095s     |
+|         | sys  0m0.060s    | sys  0m0.050s     |
++---------+------------------+-------------------+
+|         | real 0m24.731s   | real  0m20.620    |
+|  Ruby   | ser 0m0.326s     | user  0m0.057s    |
+|         | sys 0m0.115s     | sys   0m0.056s    |
++---------+------------------+-------------------+
 ~~~
