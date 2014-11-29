@@ -154,7 +154,7 @@ real	1m7.456s
 user	0m0.066s
 sys	0m0.033s
 ~~~
-Można to zrobić jeszcze szybciej kożystając z tabeli information _schema i wypisując wstawione rekordy, od których należy odjąć usunięte.
+Można to zrobić jeszcze szybciej korzystając z tabeli information _schema i wypisując wstawione rekordy, od których należy odjąć usunięte.
 
 ## Zadanie 1c
 (Zamiana formatu danych.) Zamienić string zawierający tagi na tablicę napisów z tagami następnie zliczyć wszystkie tagi i wszystkie różne tagi.
